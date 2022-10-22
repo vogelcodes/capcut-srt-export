@@ -18,10 +18,12 @@ function msToSrt(timeInMs){
 }
 const data = extractData();
 const { materials, tracks } = data;
-//regex que extrai o content entre []'s, alterado na ultima versao do capcut
-//const re = /\[(.*?)\]/ 
-//regex atual que localiza o content entre <size*></size>
-const re = /\<size.*?\>(.*?)\<\/size\>/
+
+//Habilitar apenas uma dessas linhas removendo o // da frente:
+//const re = /\[(.*?)\]/ //regex que extrai o content entre []'s, alterado na ultima versao do capcut
+const re = /\<size.*?\>(.*?)\<\/size\>/ //regex atual (v1.2.0) que localiza o content entre <size*></size>
+
+
 const subTiming = tracks[1].segments
 var subtitlesInfo = materials.texts.map(i=>{
   return {
