@@ -1,4 +1,6 @@
 # capcut-srt-export
+WebUI Available [here](https://capcut-srt-export.vogelcodes.com/)
+
 This script extracts auto captions from a CapCut Desktop project file into a .srt subtitle file.
 Necessário NodeJS instalado. NodeJS needed.
 [Download](https://nodejs.org/en/download/)
