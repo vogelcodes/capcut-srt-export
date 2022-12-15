@@ -6,10 +6,10 @@ function extractData() {
   return JSON.parse(data);
 }
 function msToSrt(timeInMs){
-  const converMs= Math.floor(timeInMs / 1000)
+  const convertMs= Math.floor(timeInMs / 1000)
   
-  const ms = converMs%1000
-  const totalSeconds = (converMs-ms)/(1000)
+  const ms = convertMs%1000
+  const totalSeconds = (convertMs-ms)/(1000)
   const seconds = (totalSeconds)%(60)
   const totalMinutes = (totalSeconds-seconds)/60
   const minutes = totalMinutes%60
@@ -26,7 +26,9 @@ let re = /\<size.*?\>((.|\n)*?)\<\/size\>/ //regex atual (v1.2.0) que localiza o
 let subTrackNumber = 1
 let subTiming = tracks[subTrackNumber].segments
 var subtitlesInfo = materials.texts.map(i=>{
-
+  if(!re.exec(i.content)){
+    re = /\<size.*?\>((.|\n)*?)\<\/size\>/
+  }
   if (re.exec(i.content)[1].substring(0,1) === '<') {
     re = /\[((.|\n)*?)\]/
   }
@@ -35,7 +37,7 @@ var subtitlesInfo = materials.texts.map(i=>{
     id: i.id
   }
 })
-console.log(subtitlesInfo)
+// console.log(subtitlesInfo)
 subtitlesInfo = subtitlesInfo.map((s,i) => {
   let segment = subTiming.find(i => i.material_id === s.id)
   while (!segment) {
