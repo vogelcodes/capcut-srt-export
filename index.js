@@ -19,21 +19,29 @@ function msToSrt(timeInMs){
 const data = extractData();
 const { materials, tracks } = data;
 
-//Habilitar apenas uma dessas linhas removendo o // da frente:
-//let re = /\[((.|\n)*?)\]/ //regex que extrai o content entre []'s, alterado na ultima versao do capcut
-let re = /\<size.*?\>((.|\n)*?)\<\/size\>/ //regex atual (v1.2.0) que localiza o content entre <size*></size>
+let regexOptions = [ /\<size.*?\>((.|\n)*?)\<\/size.*?\>/, /\[((.|\n)*?)\]/ ]
 
 let subTrackNumber = 1
 let subTiming = tracks[subTrackNumber].segments
 var subtitlesInfo = materials.texts.map(i=>{
-  if(!re.exec(i.content)){
-    re = /\<size.*?\>((.|\n)*?)\<\/size\>/
+  var matches = regexOptions.map(r => i.content.match(r))
+  // console.log(matches,i)
+  var content = matches.reduce((acc, m) => {
+    if (m){
+      // console.log(i.id, m[1])
+      if (m[1].substring(0,1) === '<') {
+        return acc}
+      else {
+        // console.log(acc+m[1])
+        return acc + m[1]
+      }
+    } else {
+      return acc
+    }
   }
-  if (re.exec(i.content)[1].substring(0,1) === '<') {
-    re = /\[((.|\n)*?)\]/
-  }
+    , '')
   return {
-    content: re.exec(i.content)[1],
+    content,
     id: i.id
   }
 })
@@ -58,13 +66,16 @@ subtitlesInfo = subtitlesInfo.map((s,i) => {
 })
 
 
-console.log(subtitlesInfo)
+// console.log(subtitlesInfo)
 const srtOut = subtitlesInfo.reduce((srt,i)=>{
   const subtitle = `${i.subNumber}\n${i.srtTiming}\n${i.content}\n\n`
   return srt+subtitle
 },'')
 //this function writes the string to a file
 function writeToFile(data) {
+  console.log('Saving subtitles to file...')
   fs.writeFileSync('subtitles.srt', data);
+  console.log('Done!')
+  // fs.writeFileSync('subtitles.json', JSON.stringify(subtitlesInfo));
 }
 writeToFile(srtOut);
