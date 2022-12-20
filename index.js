@@ -19,27 +19,29 @@ function msToSrt(timeInMs){
 const data = extractData();
 const { materials, tracks } = data;
 
-let regexOptions = [ /\<size.*?\>((.|\n)*?)\<\/size.*?\>/, /\[((.|\n)*?)\]/ ]
+// let regexOptions = [ /\<size.*?\>((.|\n)*?)\<\/size.*?\>/, /\[((.|\n)*?)\]/ ]
 
 let subTrackNumber = 1
 let subTiming = tracks[subTrackNumber].segments
 var subtitlesInfo = materials.texts.map(i=>{
-  var matches = regexOptions.map(r => i.content.match(r))
-  // console.log(matches,i)
-  var content = matches.reduce((acc, m) => {
-    if (m){
-      // console.log(i.id, m[1])
-      if (m[1].substring(0,1) === '<') {
-        return acc}
-      else {
-        // console.log(acc+m[1])
-        return acc + m[1]
-      }
-    } else {
-      return acc
-    }
-  }
-    , '')
+  // var matches = regexOptions.map(r => i.content.match(r))
+  let content = i.content.replace(/\<.*?\>/g, '').replace(/\<\/.*?\>/g, '').replace(/\[|\]/g, '')
+
+  // console.log(matches)
+  // var content = matches.reduce((acc, m) => {
+  //   if (m){
+  //     // console.log(i.id, m[1])
+  //     if (m[1].substring(0,1) === '<') {
+  //       return acc}
+  //     else {
+  //       // console.log(acc+m[1])
+  //       return acc + m[1]
+  //     }
+  //   } else {
+  //     return acc
+  //   }
+  // }
+  //   , '')
   return {
     content,
     id: i.id
