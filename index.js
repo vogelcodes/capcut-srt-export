@@ -1,8 +1,8 @@
 const fs = require('fs');
 
 //this extracts data from a json file
-function extractData() {
-  const data = fs.readFileSync('draft_content.json');
+function extractData(filename) {
+  const data = fs.readFileSync(filename);
   return JSON.parse(data);
 }
 function msToSrt(timeInMs){
@@ -16,7 +16,21 @@ function msToSrt(timeInMs){
   const hour = (totalMinutes-minutes)/60
   return `${hour < 10 ? '0'+hour:hour}:${minutes<10 ? '0'+minutes:minutes}:${seconds<10? '0'+seconds:seconds},${ms}`
 }
-const data = extractData();
+
+var draftFileName = ''
+let os = process.env.os
+switch (os) {
+  case 'Windows_NT':
+    draftFileName = 'draft_content.json'
+    break;
+  case 'Darwin':
+    draftFileName = 'draft_info.json'
+    break;
+  case 'Linux':
+    draftFileName = 'draft_info.json'
+}
+
+const data = extractData(draftFileName);
 const { materials, tracks } = data;
 
 // let regexOptions = [ /\<size.*?\>((.|\n)*?)\<\/size.*?\>/, /\[((.|\n)*?)\]/ ]

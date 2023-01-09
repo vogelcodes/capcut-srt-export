@@ -13,8 +13,6 @@ On MacOS the file is called draft_info.json and is located in:
 
 Paste it inside the script folder, then run `node index.js`. A subtitles.srt will be saved.
 
-On MacOS you need to rename `draft_info.json` to `draft_content.json` for it to work.
-
 Then open the terminal in the script folder and run `node index.js` in the terminal.
 
 A subtitles.srt file will be created.
