@@ -87,11 +87,22 @@ const srtOut = subtitlesInfo.reduce((srt,i)=>{
   const subtitle = `${i.subNumber}\n${i.srtTiming}\n${i.content}\n\n`
   return srt+subtitle
 },'')
+const copyOut = subtitlesInfo.reduce((srt,i)=>{
+  const subtitle = `${i.content}\n`
+  return srt+subtitle
+},'')
 //this function writes the string to a file
-function writeToFile(data) {
+function writeToFile(data, filename) {
   console.log('Saving subtitles to file...')
-  fs.writeFileSync('subtitles.srt', data);
+  fs.writeFileSync(filename, data);
   console.log('Done!')
   // fs.writeFileSync('subtitles.json', JSON.stringify(subtitlesInfo));
 }
-writeToFile(srtOut);
+if (process.argv[2] === '--txt') {
+  
+  console.log('Copy extraction is a courtesy of @dellucanil')
+  writeToFile(copyOut, 'copy.txt');
+} else {
+  writeToFile(srtOut, 'subtitles.srt');
+  console.log('Run "node index.js --txt" to get a copy version of the subtitles, courtesy of @dellucanil')
+}
