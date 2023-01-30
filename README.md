@@ -33,3 +33,12 @@ Now copy the draf_content.json file back to the project folder **replacing** the
 
 Open your project, your subtitles will be in uppercase.
 
+In case anything goes wrong, you can restore the original file:
+- delete the modified draft_content.json file in the project folder
+- copy the draft_content.json.bak from the script folder to the project folder
+- rename it to draft_content.json
+- open your project
+
+ 
+
+
