@@ -20,3 +20,15 @@ Then open the terminal in the script folder and run `node index.js` in the termi
 A subtitles.srt file will be created.
 
 [Video Tutorial](https://youtu.be/26fd2_s1c7U)
+
+UPDATE!!
+Now you can convert every caption in your project to Uppercase.
+
+First close your project and CapCut. Then copy json project file (draft_content.json or draft_info.json) from your projects folder from your project folder to the script folder.
+
+Then run `node uppercase.js`. It will update the draft_content.json file, turning every caption to uppercase.
+A .bak file will be created in case you want to revert the changes.
+Now copy the json file back to the project folder replacing the old one.
+
+Open your project, your subtitles will be in uppercase.
+
