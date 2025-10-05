@@ -20,15 +20,15 @@ function msToSrt(timeInMs) {
 }
 
 var draftFileName = "draft_info.json";
-let os = process.env.os;
+let os = process.platform.toLowerCase();
 switch (os) {
-  case "Windows_NT":
+  case "windows_nt":
     draftFileName = "draft_content.json";
     break;
-  case "Darwin":
+  case "darwin":
     draftFileName = "draft_info.json";
     break;
-  case "Linux":
+  case "linux":
     draftFileName = "draft_info.json";
 }
 console.log("file: " + draftFileName);
