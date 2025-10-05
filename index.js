@@ -19,7 +19,7 @@ function msToSrt(timeInMs) {
   }:${seconds < 10 ? "0" + seconds : seconds},${ms}`;
 }
 
-var draftFileName = "draft_content.json";
+var draftFileName = "draft_info.json";
 let os = process.env.os;
 switch (os) {
   case "Windows_NT":
