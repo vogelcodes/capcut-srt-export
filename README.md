@@ -58,3 +58,7 @@ In case anything goes wrong, you can restore the original file:
 - rename it to draft_content.json
 - open your project
 
+## Related Tools
+
+- [capcut-cli](https://github.com/renezander030/capcut-cli) -- CLI for editing CapCut draft_content.json: change text, timing, speed, volume. JSON output, batch edits via JSONL.
+
