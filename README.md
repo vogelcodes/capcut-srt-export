@@ -1,3 +1,22 @@
+<!-- START_INTRO -->
+> ⚡ Extraia legendas de projetos CapCut em segundos. Perfeito para estúdios de dublagem, tradutores e criadores.
+>
+> 🌐 **[Live Demo](https://capcut-srt-export.vogelcodes.com)** · 📦 **npm** · ⭐ 101+
+
+---
+
+> ⚡ Extract subtitles from CapCut projects in seconds. Perfect for dubbing studios, translators, and creators.
+>
+> 🌐 **[Live Demo](https://capcut-srt-export.vogelcodes.com)** · 📦 **npm** · ⭐ 101+
+
+---
+
+> ⚡ 从CapCut项目秒级提取字幕。适合配音工作室、翻译人员和创作者。
+>
+> 🌐 **[在线演示](https://capcut-srt-export.vogelcodes.com)** · 📦 **npm** · ⭐ 101+
+
+<!-- END_INTRO -->
+
 # capcut-srt-export
 
 WebUI Available [here](https://capcut-srt-export.vogelcodes.com)
@@ -38,7 +57,4 @@ In case anything goes wrong, you can restore the original file:
 - copy the draft_content.json.bak from the script folder to the project folder
 - rename it to draft_content.json
 - open your project
-
- 
-
 
